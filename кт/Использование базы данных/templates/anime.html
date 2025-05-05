@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список аниме
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5">Моё любимое аниме</h1>
+
+<div class="row">
+    {% for anime in anime_list %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h4>{{ anime.title }}</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Мангака:</strong> {{ anime.creator.name }}</p>
+                <p class="card-text"><strong>Год выпуска:</strong> {{ anime.year }}</p>
+                <p class="card-text"><strong>Эпизоды:</strong> {{ anime.episodes }}</p>
+                <p class="card-text">
+                    <strong>Статус:</strong>
+                    <span class="badge {% if anime.status == 'Ongoing' %}bg-success{% else %}bg-secondary{% endif %}">
+                        {{ anime.status }}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block title %}Список группы{% endblock %} {% block
+content %}
+<h1 class="mb-5">Наша группа</h1>
+
+{% if students %}
+<div class="row">
+	{% for student in students %}
+	<div class="col-md-4 mb-4">
+		<div class="card h-100">
+			<div class="card-header bg-primary text-white">
+				<h4>{{ student.surname }} {{ student.name }}</h4>
+			</div>
+			<div class="card-body">
+				<p class="card-text">
+					<strong>Курс:</strong>
+					{{ student.course }}
+				</p>
+				<p class="card-text">
+					<strong>Возраст:</strong>
+					{{ student.age }}
+				</p>
+				<p class="card-text">
+					<strong>Направление:</strong>
+					{{ student.direction }}
+				</p>
+				<p class="card-text">
+					<strong>Специализация:</strong>
+					{{ student.specialization }}
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">Нет данных о студентах</div>
+{% endif %} {% endblock %}
